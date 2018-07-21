@@ -66,7 +66,7 @@
       <div class="row">
         <div class="col-md-12">
           <% flash.each do |key,msg| %>
-            <div class="text-center alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+            <div class="text-center alert-<%= key %> alert-dismissible alert">
               <%= msg%>
             </div>
           <% end %>

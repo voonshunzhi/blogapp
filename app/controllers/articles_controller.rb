@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     def index
-        
+        @articles = Article.descending_order
     end
     def new
         @article = Article.new
@@ -14,6 +14,16 @@ class ArticlesController < ApplicationController
             flash.now[:danger] = "Article has not been created."
             render 'new'
         end
+    end
+    def show
+            @article = Article.find(params[:id])
+    end
+    
+    protected 
+    def resource_not_found
+        message = "The article that you are looking for cannot be found."
+        flash[:danger] = message
+        redirect_to root_path
     end
     
     private

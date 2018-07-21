@@ -18,6 +18,19 @@ class ArticlesController < ApplicationController
     def show
             @article = Article.find(params[:id])
     end
+    def edit
+        @article = Article.find(params[:id])
+    end
+    def update
+        @article = Article.find(params[:id])
+        if @article.update(article_params)
+            flash[:success] = "Article was successfully updated."
+            redirect_to article_path(@article)
+        else
+            flash.now[:danger] = "Fail to update article."
+            render 'edit'
+        end
+    end
     
     protected 
     def resource_not_found

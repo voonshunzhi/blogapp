@@ -7,7 +7,8 @@
         <div class="article-body">
             <%= @article.body%>
         </div>
-    </article>
+        <%= link_to "Edit Article",edit_article_path,class:"btn btn-primary btn-lg btn-space"%>
+</article>
 <% else %>
     <h3>No result is found!</h3>
 <%end%>

@@ -12,7 +12,7 @@ RSpec.feature "CreateArticles", type: :feature do
       click_link("New article")                 #Click on the create article link
       fill_in "Title",with:"Creating a blog"    #Fill in title
       fill_in "Body",with:"Lorem ipsum"         #Fill in body
-      click_button "Create Article"             #Create article
+      click_button "Create article"             #Create article
       
       #Expectations:
       #Article has been created
@@ -28,7 +28,7 @@ RSpec.feature "CreateArticles", type: :feature do
     click_link 'New article'
     fill_in "Title",with:""
     fill_in "Body",with:""
-    click_button "Create Article"
+    click_button "Create article"
     
     expect(page).to have_content("Article has not been created.")
     expect(page).to have_content("Title can't be blank")

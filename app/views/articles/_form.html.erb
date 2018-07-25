@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-11 offset-md-1">
-                    <%= form.submit class:"btn btn-primary btn-lg pull-right"%>
+                    <%= form.submit(@article.new_record? ? "Create article":"Update article",class:"btn btn-primary btn-lg pull-right")%>
                 </div>
             </div>
         <% end %>

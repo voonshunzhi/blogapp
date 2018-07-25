@@ -1,5 +1,7 @@
 <h1>Hello world this is my first test-driven development using gem</h1>
+<% if user_signed_in? %>
 <%= link_to "New article",new_article_path,class:"btn btn-lg btn-default",id:"new-article-btn"%>
+<% end %>
 <% if @articles.empty? %>
     <h1 id="no-articles">No articles created.</h1>
 <% else %>

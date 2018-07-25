@@ -12,6 +12,42 @@
             <%= link_to "Delete article",article_path(@article),class:"btn btn-primary btn-lg btn-space",method: :delete,
             data:{confirm:"Are you sure ?"}%>
         <% end %>
+        <hr>
+        <div class="col-md-12">
+            <%= form_for [@article,@comment],html:{class:"form-horizontal",role:"form"} do |form|%>
+                <% if @comment.errors.any? %>
+                    <div class="panel panel-danger col-md-offset-1">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                <%= pluralize(@comment.errors.count,'error')%>
+                                prohibited this comment from being saved.
+                            </h2>
+                            <div class="panel-body">
+                                <% @comment.errors.full_messages.each do |error|%>
+                                    <li><%= error %></li>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% end %>
+                
+                <div class="form-group">
+                    <div class="control-label col-md-2">
+                        <%= form.label :body,"New Comment"%>
+                    </div>
+                    <div class="col-md-10">
+                        <%= form.text_area :body,rows:10,class:"form-control",placeholder:"Your Comment!"%>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <%= form.submit "Add comment",class:"btn btn-primary btn-lg pull-right"%>
+                    </div>
+                </div>
+            <% end %>
+        </div>
 </article>
 <% else %>
     <h3>No result is found!</h3>

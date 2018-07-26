@@ -23,7 +23,8 @@ class ArticlesController < ApplicationController
     end
     
     def show  
-        @comments = @article.comments.build
+        @comment = @article.comments.build
+        @comments = @article.comments
     end
     
     def edit

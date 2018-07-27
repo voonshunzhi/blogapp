@@ -2,12 +2,11 @@ class CommentsController < ApplicationController
     before_action :set_article
     
     def create
-        
         @comment = @article.comments.build(comment_params)
         @comment.user = current_user
         
         if @comment.save
-            flash[:success] = "Comment has been created."
+            flash[:notice] = "Comment has been created."
         else
             flash.now[:danger] = "Comment has not been created."
         end

@@ -5,4 +5,5 @@ end
 
 Warden::Manager.before_logout do |user, auth, opts| 
 scope = opts[:scope] 
-auth.co
+auth.cookies.signed["#{scope}.id"] = nil
+end

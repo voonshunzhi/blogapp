@@ -7,10 +7,10 @@ class CommentsController < ApplicationController
         
         if @comment.save
             flash[:notice] = "Comment has been created."
+            ActionCable.server.broadcast "comment_channel",render(partial: 'articles/comment', object: @comment ) 
         else
             flash.now[:danger] = "Comment has not been created."
         end
-        redirect_to article_path(@article)
     end
     
     private

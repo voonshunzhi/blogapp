@@ -61,4 +61,9 @@ Rails.application.configure do
   
   #Setting the default url of you apps
   config.action_mailer.default_url_options = { host: "https://blogapp-voonshunzhi.c9users.io"}
+  
+  # config.action_cable.allowed_request_origins = [
+  #   'https://blogapp-voonshunzhi.c9users.io' ]
+  
+  config.action_cable.disable_request_forgery_protection = true
 end

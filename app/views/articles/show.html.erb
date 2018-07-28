@@ -14,7 +14,7 @@
         <% end %>
         <hr>
         <div class="col-md-12">
-            <%= form_for [@article,@comment],html:{class:"form-horizontal",role:"form"} do |form|%>
+            <%= form_for [@article,@comment],html:{class:"form-horizontal",role:"form"},remote:true do |form|%>
                 <% if @comment.errors.any? %>
                     <div class="panel panel-danger col-md-offset-1">
                         <div class="panel-heading">
@@ -53,20 +53,22 @@
                 <h2>Comments :</h2>
             </header>
             <div class="col-md-10">
-                <% if @article.comments.any? %>
-                    <% persisted_comments(@comments).each do |comment|%>
-                        <div class="comment-body">
-                            <%= comment.body %>
-                        </div>
-                        <div class="comment-time">
-                            <%= time_ago_in_words(comment.created_at)%>
-                            ago by <%= comment.user.email%>
-                        </div>
-                        <hr>
-                    <% end %>
-                <% else %>
-                    There are no comment to show.
-                <% end %>
+                <div id="message">
+                    <% if @article.comments.any? %>
+                            <% persisted_comments(@comments).each do |comment|%>
+                                <div class="comment-body">
+                                    <%= comment.body %>
+                                </div>
+                                <div class="comment-time">
+                                    <%= time_ago_in_words(comment.created_at)%>
+                                    ago by <%= comment.user.email%>
+                                </div>
+                                <hr>
+                            <% end %>
+                        <% else %>
+                            There are no comment to show.
+                        <% end %>
+                    </div>
             </div>
         </div>
 </article>
